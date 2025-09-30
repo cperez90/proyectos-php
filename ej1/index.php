@@ -25,7 +25,7 @@
     ?>
     <ul>
         <?php foreach ($books as $book){
-            echo "<li>$book</li>";
+            echo "<li>{$book}™</li>";
         }
         ?>
     </ul>
