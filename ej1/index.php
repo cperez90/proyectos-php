@@ -1,6 +1,16 @@
 <?php
 
-$books = [
+$business = [
+    'name' => 'Laracasts',
+    'cost' => 15,
+    'categories' => ["Testing", "PHP", "Javascript"]
+];
+
+function register($user){
+
+}
+
+/*$books = [
         [
                 'name' =>    "Do Androids Dream of Electric Sheep",
                 'author' => 'Philip K. Dick',
@@ -21,7 +31,7 @@ $books = [
         ]
 ];
 
-/*function filter($items, $fn) {
+function filter($items, $fn) {
     $filteredItems = [];
 
     foreach ($items as $item){
@@ -31,10 +41,10 @@ $books = [
     }
 
     return $filteredItems;
-};*/
+};
 
 $filteredBooks = array_filter($books, function ($book){
     return $book['author'] === 'Andy Weir';
-});
+});*/
 
 require  "index.view.php";
