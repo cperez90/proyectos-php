@@ -2,11 +2,11 @@
 
 require 'functions.php';
 
-//require 'router.php';
+require 'router.php';
 
 
 //connect to our MYSQL
-$dsn = "mysql:host=192.168.1.70;port=3306;user=admin;password=admin;dbname=mi_base;";
+/*$dsn = "mysql:host=100.74.167.64;port=3306;user=admin;password=admin;dbname=mi_base;";
 
 $pdo = new PDO($dsn);
 
@@ -18,7 +18,7 @@ $post = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($post as $po){
     echo "<li>".$po['title']."</li>";
-}
+}*/
 
 
 /*class Person{
