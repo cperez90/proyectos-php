@@ -1,0 +1,23 @@
+# Activa el motor de reescritura
+RewriteEngine On
+
+# Desactiva listado de directorios
+Options -Indexes
+
+# Si el archivo o directorio no existe, envía todo a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+# Fuerza UTF-8
+AddDefaultCharset UTF-8
+
+# Evita mostrar .htaccess en el navegador
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Evita acceso directo a archivos sensibles
+<FilesMatch "\.(env|ini|log|sh|sql)$">
+    Require all denied
+</FilesMatch>
