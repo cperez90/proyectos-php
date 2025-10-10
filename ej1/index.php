@@ -6,9 +6,11 @@ require 'functions.php';
 
 require 'Database.php';
 
-$db = new Database();
+$config = require('config.php');
 
-$posts = $db->query("SELECT * FROM post")->fetchAll(PDO::FETCH_ASSOC);
+$db = new Database($config['database']);
+
+$posts = $db->query("SELECT * FROM post")->fetchAll();
 
 dd($posts);
 
