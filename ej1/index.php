@@ -2,23 +2,15 @@
 
 require 'functions.php';
 
-require 'router.php';
+//require 'router.php';
 
+require 'Database.php';
 
-//connect to our MYSQL
-/*$dsn = "mysql:host=100.74.167.64;port=3306;user=admin;password=admin;dbname=mi_base;";
+$db = new Database();
 
-$pdo = new PDO($dsn);
+$posts = $db->query("SELECT * FROM post")->fetchAll(PDO::FETCH_ASSOC);
 
-$statement = $pdo->prepare("SELECT * FROM post");
-
-$statement->execute();
-
-$post = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($post as $po){
-    echo "<li>".$po['title']."</li>";
-}*/
+dd($posts);
 
 
 /*class Person{
