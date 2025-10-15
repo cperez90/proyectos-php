@@ -1,14 +1,6 @@
 <?php
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
-$routers = [
-    '/ej1/' => 'controllers/index.php',
-    '/ej1/about' => 'controllers/about.php',
-    '/ej1/notes' => 'controllers/notes.php',
-    '/ej1/note' => 'controllers/note.php',
-    '/ej1/contact' => 'controllers/contact.php',
-];
+$routers = require('routers.php');
 
 function routeToController($uri,$routers)
 {
@@ -25,5 +17,7 @@ function abort($code = 404){
 
     die();
 }
+
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 routeToController($uri,$routers);
