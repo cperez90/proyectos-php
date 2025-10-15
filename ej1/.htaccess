@@ -1,6 +1,9 @@
 # Activa el motor de reescritura
 RewriteEngine On
 
+# Define la ruta base del proyecto (muy importante)
+RewriteBase /ej1/
+
 # Desactiva listado de directorios
 Options -Indexes
 

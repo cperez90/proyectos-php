@@ -63,6 +63,7 @@
             <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
             <a href="/ej1" aria-current="page" class="<?= urlIs('/ej1') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 rounded-md px-3 py-2 text-base font-medium">Home</a>
             <a href="ej1/about" class="<?= urlIs('ej1/about') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-base font-medium hover:bg-gra-700 hover:text-white">About</a>
+            <a href="ej1/about" class="<?= urlIs('ej1/notes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-base font-medium hover:bg-gra-700 hover:text-white">Notes</a>
             <a href="ej1/contact" class="<?= urlIs('ej1/about') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white">Contact</a>
         </div>
         <div class="border-t border-white/10 pt-4 pb-3">

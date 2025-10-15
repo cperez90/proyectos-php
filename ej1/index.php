@@ -2,21 +2,17 @@
 
 require 'functions.php';
 
-//require 'router.php';
-
 require 'Database.php';
 
-$config = require('config.php');
+require 'router.php';
 
-$db = new Database($config['database']);
-
-$id = $_GET['id'];
+/*$id = $_GET['id'];
 
 $query = "SELECT * FROM post where id = :id";
 
 $posts = $db->query($query,[':id' => $id])->fetch();
 
-dd($posts);
+dd($posts);*/
 
 
 /*class Person{
