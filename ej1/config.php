@@ -2,7 +2,7 @@
 
 return [
     'database' => [
-        'host' => '192.168.1.70',
+        'host' => '100.74.167.64',
         'port' => 3306,
         'dbname' => 'mi_base'
         ]
