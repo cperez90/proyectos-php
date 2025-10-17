@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Define la ruta base del proyecto (muy importante)
-RewriteBase /ej1/
+RewriteBase /
 
 # Desactiva listado de directorios
 Options -Indexes
@@ -11,6 +11,8 @@ Options -Indexes
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [L,QSA]
+
+Options -Indexes
 
 # Fuerza UTF-8
 AddDefaultCharset UTF-8
