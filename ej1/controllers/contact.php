@@ -3,5 +3,5 @@
 $heading = "Contact Us";
 
 view("contact.view.php", [
-    'heading' => 'Home'
+    'heading' => 'Contac Us'
 ]);
