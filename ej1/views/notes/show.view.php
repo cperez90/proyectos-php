@@ -7,11 +7,15 @@
                 <a href="/notes" class="text-blue-500 hover:underline">go back...</a>
             </p>
             <p><?= htmlspecialchars($note['body']) ?></p>
-            <form class="mt-6" method="post">
+
+            <footer class="mt-6">
+                <a href="/note/edit?id=<?= $note['id'] ?>" class="text-gray-500 border-current px-4 py-2 rounded">Edit</a>
+            </footer>
+            <!--<form class="mt-6" method="post">
                 <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="id" value="<?= $note['id'] ?>">
+                <input type="hidden" name="id" value="<?php /*= $note['id'] */?>">
                 <button class="text-sm text-red-500">Delete</button>
-            </form>
+            </form>-->
         </div>
     </main>
 <?php require __DIR__.'/../partials/footer.php' ?>
