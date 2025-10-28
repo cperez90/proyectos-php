@@ -2,7 +2,7 @@
 <?php require __DIR__.'/../partials/nav.php' ?>
 <?php require __DIR__.'/../partials/banner.php' ?>
     <main>
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 bg-white">
             <form method="post" action="/note">
                 <input type="hidden" name="_method" value="PATCH">
                 <input type="hidden" name="id" value="<?= $note['id'] ?>">
