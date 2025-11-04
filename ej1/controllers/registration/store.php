@@ -4,6 +4,8 @@ use Core\Validator;
 use Core\App;
 use Core\Database;
 
+$db = App::resolve(Database::class);
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -18,12 +20,11 @@ if (!Validator::string($password, 7 ,255)){
 }
 
 if (! empty($errors)) {
-    return view('registration/create.view.php', [
+    view('registration/create.view.php', [
         'errors' => $errors
     ]);
 }
 
-$db = App::resolve(Database::class);
 //check if the account already exists
 $user = $db->query('select * from user where email = :email', [
     'email' => $email
@@ -40,10 +41,7 @@ if ($user){
         'password' => password_hash($password,PASSWORD_BCRYPT)
     ]);
 
-    // mark that the user has logged in.
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login($user);
 
     header('location: /');
     exit();
