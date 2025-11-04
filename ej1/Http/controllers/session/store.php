@@ -1,5 +1,6 @@
 <?php
 
+use Core\Session;
 use Http\Forms\LoginForm;
 use Core\Authenticator;
 
@@ -20,6 +21,6 @@ if ($form->validate($email, $password)) {
 
 }
 
-view('session/create.view.php', [
-    'errors' => $form->errors()
-]);
+Session::flash('errors', $form->errors());
+
+redirect('/login');
