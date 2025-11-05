@@ -1,0 +1,17 @@
+{
+    "name": "root/ej1",
+    "authors": [
+        {
+            "name": "prueba"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^12.37"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+	    "Http\\": "Http/"
+        }
+   }
+}
