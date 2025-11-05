@@ -16,7 +16,7 @@ class Session
 
     public static function get($key, $default = null)
     {
-        if ($_SESSION['_flash'][$key]) {
+        if (isset($_SESSION['_flash'][$key]) && array_key_exists($key, $_SESSION['_flash'])) {
             return $_SESSION['_flash'][$key];
         }
 
