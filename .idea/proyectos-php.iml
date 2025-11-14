@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ej1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ej1/Core" isTestSource="false" packagePrefix="Core\" />
       <sourceFolder url="file://$MODULE_DIR$/ej1/Http" isTestSource="false" packagePrefix="Http\" />
+      <sourceFolder url="file://$MODULE_DIR$/ej1/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/brianium/paratest" />
       <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/doctrine/deprecations" />
@@ -69,6 +70,31 @@
       <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/ta-tikoma/phpunit-architecture-test" />
       <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/amp" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/byte-stream" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/parallel" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/parser" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/pipeline" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/process" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/serialization" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/amphp/sync" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/danog/advanced-json-rpc" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/daverandom/libdns" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/dnoegel/php-xdg-base-dir" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/felixfbecker/language-server-protocol" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/kelunik/certificate" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/league/uri" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/league/uri-interfaces" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/netresearch/jsonmapper" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/revolt/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/spatie/array-to-xml" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/ej1/vendor/vimeo/psalm" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

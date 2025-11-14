@@ -86,6 +86,31 @@
       <path value="$PROJECT_DIR$/ej1/vendor/composer" />
       <path value="$PROJECT_DIR$/ej1/vendor/symfony/polyfill-php84" />
       <path value="$PROJECT_DIR$/ej1/vendor/symfony/polyfill-php85" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/cache" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/byte-stream" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/parser" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/amp" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/parallel" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/socket" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/serialization" />
+      <path value="$PROJECT_DIR$/ej1/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/ej1/vendor/league/uri-interfaces" />
+      <path value="$PROJECT_DIR$/ej1/vendor/league/uri" />
+      <path value="$PROJECT_DIR$/ej1/vendor/spatie/array-to-xml" />
+      <path value="$PROJECT_DIR$/ej1/vendor/revolt/event-loop" />
+      <path value="$PROJECT_DIR$/ej1/vendor/daverandom/libdns" />
+      <path value="$PROJECT_DIR$/ej1/vendor/netresearch/jsonmapper" />
+      <path value="$PROJECT_DIR$/ej1/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/ej1/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/ej1/vendor/kelunik/certificate" />
+      <path value="$PROJECT_DIR$/ej1/vendor/vimeo/psalm" />
+      <path value="$PROJECT_DIR$/ej1/vendor/danog/advanced-json-rpc" />
+      <path value="$PROJECT_DIR$/ej1/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/dns" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/sync" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/process" />
+      <path value="$PROJECT_DIR$/ej1/vendor/amphp/pipeline" />
+      <path value="$PROJECT_DIR$/ej1/vendor/felixfbecker/language-server-protocol" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
@@ -161,9 +186,15 @@
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/ej1/phpunit.xml" custom_loader_path="$PROJECT_DIR$/ej1/vendor/autoload.php" paratest_path="$PROJECT_DIR$/ej1/vendor/bin/paratest_for_phpstorm" use_configuration_file="true" />
+    </phpunit_settings>
+  </component>
   <component name="Psalm">
     <Psalm_settings>
       <psalm_fixer_by_interpreter asDefaultInterpreter="true" interpreter_id="8be4333b-3476-483e-9057-cd23e661528e" timeout="60000" />
+      <PsalmConfiguration tool_path="$PROJECT_DIR$/ej1/vendor/bin/psalm" />
     </Psalm_settings>
   </component>
   <component name="PsalmOptionsConfiguration">

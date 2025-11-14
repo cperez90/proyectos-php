@@ -2,32 +2,30 @@
 
 class Playlist
 {
-    public $name;
-    public $songs;
-
-    public function  __construct($name, $songs)
+    public function  __construct(public $name,public array $songs)
     {
-        $this->name = $name;
-        $this->songs = $songs;
-    }
 
-    public function shuffle()
-    {
-        shuffle($this->songs);
     }
 
 }
 
+class Song
+{
+    public function __construct(public string $name, public string $artist)
+    {
 
-/*$playlists = [];
+    }
+}
 
-$playlists[] = new Playlist('80s Headbangers', [
-    'Back in Black',
-    'Are You Ready',
-    'Hells Bells',
-    'Highway to Hell'
-]);
+$songs = [
+    new Song('My Hearts Will Go On', 'Celine Dion'),
+    false,
+    'adasaadasd',
+    null
+];
 
-$playlists[0]->shuffle();
+$playlist = new Playlist('80s Headbangers', $songs);
 
-die(var_dump($playlists));*/
+foreach ($playlist->songs as $song) {
+    echo  $song->artist;
+}
