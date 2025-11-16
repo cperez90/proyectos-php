@@ -18,10 +18,7 @@ class Song
 }
 
 $songs = [
-    new Song('My Hearts Will Go On', 'Celine Dion'),
-    false,
-    'adasaadasd',
-    null
+    new Song('My Hearts Will Go On', 'Celine Dion')
 ];
 
 $playlist = new Playlist('80s Headbangers', $songs);
