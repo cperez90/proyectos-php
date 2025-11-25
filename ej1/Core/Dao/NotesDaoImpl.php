@@ -2,7 +2,7 @@
 
 namespace Core\Dao;
 
-interface UserDao
+class NotesDaoImpl
 {
 
 }
