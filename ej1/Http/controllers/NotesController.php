@@ -9,13 +9,23 @@ use JetBrains\PhpStorm\NoReturn;
 
 class NotesController
 {
+    public $db;
+    public $user;
+    public array $notes;
+    public array $errors;
+
+    public function __construct()
+    {
+        $this->db = App::resolve(Database::class);
+        $this->user = $_SESSION['user'] ?? null;
+        $this->errors = [];
+    }
     protected function currentUserId() {
         return $_SESSION['user']['id'] ?? null;
     }
 
     protected function getNoteOrFail($id) {
-        $db = App::resolve(Database::class);
-        $note = $db->query("SELECT * FROM note WHERE id = :id", [
+        $note = $this->db->query("SELECT * FROM note WHERE id = :id", [
             'id' => $id
         ])->findOrFail();
 
@@ -49,10 +59,9 @@ class NotesController
 
     function showNotes(): void
     {
-        $db = App::resolve(Database::class);
-
-        $notes = $db ->query('SELECT * FROM note WHERE user_id=1')->get();
-
+        $notes = $this->db ->query('SELECT * FROM note WHERE user_id= :userId',[
+            'userId'=> $this->user['id']
+        ])->get();
         view("notes/index.view.php", [
             'heading' => 'My Notes',
             'notes' => $notes
@@ -73,20 +82,18 @@ class NotesController
         ]);
     }
 
+    #[NoReturn]
     function store(): void
     {
         $userId = $this->currentUserId();
         if (!$userId) {
-            header('location: /login'); // o abort()
+            header('location: /login');
             exit;
         }
 
-        $db = App::resolve(Database::class);
-
-        $errors = [];
 
         if (! Validator::string($_POST['body'], 1,1000)){
-            $errors['body'] = 'A body of no more 1,000 characters is required';
+            $this->errors['body'] = 'A body of no more 1,000 characters is required';
         }
 
         if(! empty($errors)){
@@ -95,7 +102,7 @@ class NotesController
                 'errors' => $errors
             ]);
         }
-        $db->query('INSERT INTO note(body,user_id) VALUES (:body, :user_id)',[
+        $this->db->query('INSERT INTO note(body,user_id) VALUES (:body, :user_id)',[
             'body' => $_POST['body'],
             'user_id'=> $userId
         ]);
@@ -113,22 +120,20 @@ class NotesController
 
         $note = $this->getNoteOrFail($_POST['id']);
 
-        $errors = [];
 
         if (! Validator::string($_POST['body'], 1,1000)){
-            $errors['body'] = 'A body of no more 1,000 characters is required';
+            $this->errors['body'] = 'A body of no more 1,000 characters is required';
         }
 
-        if (count($errors)) {
+        if (count($this->errors)) {
             view('notes/edit.view.php', [
                 'heading' => 'Edit Note',
-                'errors' => $errors,
+                'errors' => $this->errors,
                 'note' => $note
             ]);
         }
 
-        $db = App::resolve(Database::class);
-        $db->query('update note set body = :body where id = :id',[
+        $this->db->query('update note set body = :body where id = :id',[
             'id' => $_POST['id'],
             'body' => $_POST['body']
         ]);
@@ -146,8 +151,7 @@ class NotesController
 
         $note = $this->getNoteOrFail($_POST['id']);
 
-        $db = App::resolve(Database::class);
-        $db->query("DELETE FROM note WHERE id = :id", [
+        $this->db->query("DELETE FROM note WHERE id = :id", [
             'id' => $note['id']
         ]);
 
