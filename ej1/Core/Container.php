@@ -18,6 +18,38 @@ class Container
 
         $resolver = $this->bindings[$key];
 
-        return call_user_func($resolver);
+        if (is_callable($resolver)) {
+            return $resolver($this);
+        }
+
+        return $this->instantiate($key);
+    }
+
+    private function instantiate($class)
+    {
+        $reflection = new \ReflectionClass($class);
+        $constructor = $reflection->getConstructor();
+
+        if ($constructor === null) {
+            return new $class();
+        }
+
+        $parameters = $constructor->getParameters();
+        $dependencies = [];
+
+        foreach ($parameters as $parameter) {
+
+            $dependency = $parameter->getClass();
+
+            if ($dependency !== null) {
+
+                $dependencies[] = $this->resolve($dependency->getName());
+            } else {
+
+                $dependencies[] = null;
+            }
+        }
+
+        return $reflection->newInstanceArgs($dependencies);
     }
 }

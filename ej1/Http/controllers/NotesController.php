@@ -3,20 +3,20 @@
 namespace Http\controllers;
 
 use Core\App;
-use Core\Database;
+use Core\Dao\NotesDao;
+use Core\Dao\NotesDaoImpl;
 use Core\Validator;
 use JetBrains\PhpStorm\NoReturn;
 
 class NotesController
 {
-    public $db;
+    public NotesDao $notesDao;
     public $user;
-    public array $notes;
     public array $errors;
 
     public function __construct()
     {
-        $this->db = App::resolve(Database::class);
+        $this->notesDao = App::resolve(NotesDao::class);
         $this->user = $_SESSION['user'] ?? null;
         $this->errors = [];
     }
@@ -25,9 +25,8 @@ class NotesController
     }
 
     protected function getNoteOrFail($id) {
-        $note = $this->db->query("SELECT * FROM note WHERE id = :id", [
-            'id' => $id
-        ])->findOrFail();
+
+        $note = $this->notesDao->getNoteById($id);
 
         authorize($note['user_id'] === $this->currentUserId());
 
@@ -59,9 +58,7 @@ class NotesController
 
     function showNotes(): void
     {
-        $notes = $this->db ->query('SELECT * FROM note WHERE user_id= :userId',[
-            'userId'=> $this->user['id']
-        ])->get();
+        $notes = $this->notesDao->getAllNotesByUserId($this->user['id']);
         view("notes/index.view.php", [
             'heading' => 'My Notes',
             'notes' => $notes
@@ -102,10 +99,7 @@ class NotesController
                 'errors' => $errors
             ]);
         }
-        $this->db->query('INSERT INTO note(body,user_id) VALUES (:body, :user_id)',[
-            'body' => $_POST['body'],
-            'user_id'=> $userId
-        ]);
+        $this->notesDao->createNote($_POST['body'], $userId);
 
         header('location: /notes');
         exit;
@@ -133,10 +127,7 @@ class NotesController
             ]);
         }
 
-        $this->db->query('update note set body = :body where id = :id',[
-            'id' => $_POST['id'],
-            'body' => $_POST['body']
-        ]);
+        $this->notesDao->updateNote($_POST['id'], $_POST['body']);
 
         header('location: /notes');
         exit;
@@ -151,9 +142,7 @@ class NotesController
 
         $note = $this->getNoteOrFail($_POST['id']);
 
-        $this->db->query("DELETE FROM note WHERE id = :id", [
-            'id' => $note['id']
-        ]);
+        $this->notesDao->deleteNoteById($note['id']);
 
         header('location: /notes');
         exit;
