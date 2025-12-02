@@ -2,9 +2,9 @@
 
 use Core\Validator;
 use Core\App;
-use Core\Database;
+use Core\Dao\UserDAO;
 
-$db = App::resolve(Database::class);
+$userDao = App::resolve(UserDAO::class);
 
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -24,23 +24,19 @@ if (! empty($errors)) {
     ]);
 }
 
-$user = $db->query('select * from user where email = :email', [
-    'email' => $email
-])->find();
+$user = $userDao->findByEmail($email);
 
 if ($user){
     header('location: /');
     exit();
 }else {
 
-    $db->query('INSERT INTO user(password, email) VALUES(:password, :email)',[
+    $userDao->create([
         'email' => $email,
-        'password' => password_hash($password,PASSWORD_BCRYPT)
+        'password' => $password
     ]);
 
-    $user = $db->query('SELECT * FROM user WHERE email = :email', [
-        'email' => $email
-    ])->find();
+    $user = $userDao->findByEmail($email);
 
     if (!$user) {
         throw new Exception("Error: No se pudo recuperar el usuario después del registro.");

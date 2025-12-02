@@ -2,13 +2,19 @@
 
 namespace Core;
 
+use Core\Dao\UserDao;
+
 class Authenticator
 {
+    private UserDao $userDao;
+
+    public function __construct(UserDao $userDao)
+    {
+        $this->userDao = $userDao;
+    }
     public function attempt($email, $password)
     {
-        $user = App::resolve(Database::class)->query('select * from user where  email = :email', [
-            'email' => $email
-        ])->find();
+        $user = $this->userDao->findByEmail($email);
         if ($user) {
             if (password_verify($password, $user['password'])){
                 $this->login($user);

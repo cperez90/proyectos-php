@@ -1,9 +1,12 @@
 <?php
 
 
+use Core\App;
 use Core\Authenticator;
 
-(new Authenticator)->logout();
+$auth = App::resolve(Authenticator::class);
+
+$auth->logout();
 
 header('location: /');
 exit();

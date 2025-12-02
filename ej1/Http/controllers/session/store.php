@@ -1,5 +1,6 @@
 <?php
 
+use Core\App;
 use Http\Forms\LoginForm;
 use Core\Authenticator;
 
@@ -8,7 +9,9 @@ $form = LoginForm::validate($attributes = [
     'password' => $_POST['password']
 ]);
 
-$signedIn = (new Authenticator)->attempt(
+$authenticator = App::resolve(Authenticator::class);
+
+$signedIn = $authenticator->attempt(
     $attributes['email'], $attributes['password']
 );
 

@@ -5,6 +5,9 @@ use Core\Container;
 use Core\Database;
 use Core\Dao\NotesDaoImpl;
 use Core\Dao\NotesDao;
+use Core\Dao\UserDAO;
+use Core\Dao\UserDaoImpl;
+use Core\Authenticator;
 
 $container = new Container();
 
@@ -13,8 +16,16 @@ $container->bind('Core\Database',function (){
     return new Database($config['database']);
 });
 
+$container->bind(UserDAO::class, function ($container) {
+    return new UserDaoImpl($container->resolve('Core\Database'));
+});
+
 $container->bind(NotesDAO::class, function ($container) {
     return new NotesDaoImpl($container->resolve('Core\Database'));
+});
+
+$container->bind(Authenticator::class, function ($container) {
+    return new Authenticator($container->resolve(UserDAO::class));
 });
 
 App::setContainer($container);
